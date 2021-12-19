@@ -2,22 +2,22 @@ package es.ulpgc.toys.products.model;
 
 import es.ulpgc.toys.products.Toy;
 
-public class HelicopterToy implements Toy {
+public class AmericanCarToy implements Toy {
 
     private final Integer serialNumber;
 
-    public HelicopterToy(Integer serialnumber) {
+    public AmericanCarToy(Integer serialnumber) {
         this.serialNumber = serialnumber;
     }
 
     @Override
     public void pack() {
-        System.out.println("Packing helicopter...");
+        System.out.println("Packing american car...");
     }
 
     @Override
     public void label() {
-        System.out.println("Helicopter....");
+        System.out.println("American car....");
     }
-
 }
+

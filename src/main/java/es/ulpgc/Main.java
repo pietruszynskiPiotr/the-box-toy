@@ -1,28 +1,39 @@
 package es.ulpgc;
 
 import es.ulpgc.toys.products.Toy;
-import es.ulpgc.toys.ToyBusiness;
+import es.ulpgc.toys.products.business.AmericanToyBusiness;
+import es.ulpgc.toys.products.business.AsianToyBusiness;
+import es.ulpgc.toys.products.business.ToyBusiness;
 
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        ToyBusiness business = new ToyBusiness();
+        ToyBusiness americanToyBusiness = new AmericanToyBusiness();
+        ToyBusiness asianToyBusiness = new AsianToyBusiness();
         Scanner keyboard = new Scanner(System.in);
         String line = "";
         while (!line.equals("exit")) {
             line = keyboard.nextLine();
-            if (line.equals("Car")) {
-                Toy car = business.createToy(line);
-                car.label();
-                car.pack();
-            } else if (line.equals("Helicopter")) {
-                Toy helicopter = business.createToy(line);
-                helicopter.label();
-                helicopter.pack();
-            } else {
-                System.out.println("Command unknown!");
+            switch (line) {
+                case "American Car":
+                case "American Helicopter": {
+                    Toy car = americanToyBusiness.createToy(line);
+                    car.label();
+                    car.pack();
+                    break;
+                }
+                case "Asian Car":
+                case "Asian Helicopter": {
+                    Toy car = asianToyBusiness.createToy(line);
+                    car.label();
+                    car.pack();
+                    break;
+                }
+                default:
+                    System.out.println("Command unknown!");
+                    break;
             }
         }
     }
