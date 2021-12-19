@@ -1,5 +1,6 @@
 package es.ulpgc;
 
+import es.ulpgc.toys.products.Toy;
 import es.ulpgc.toys.ToyBusiness;
 
 import java.util.Scanner;
@@ -13,9 +14,13 @@ public class Main {
         while (!line.equals("exit")) {
             line = keyboard.nextLine();
             if (line.equals("Car")) {
-                business.createCar();
+                Toy car = business.createToy(line);
+                car.label();
+                car.pack();
             } else if (line.equals("Helicopter")) {
-                business.createHelicopter();
+                Toy helicopter = business.createToy(line);
+                helicopter.label();
+                helicopter.pack();
             } else {
                 System.out.println("Command unknown!");
             }
