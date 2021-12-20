@@ -1,4 +1,4 @@
-package es.ulpgc.toys.products;
+package es.ulpgc.toys.products.model;
 
 public interface Toy {
 

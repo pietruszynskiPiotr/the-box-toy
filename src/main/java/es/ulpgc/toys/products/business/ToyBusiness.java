@@ -1,11 +1,18 @@
 package es.ulpgc.toys.products.business;
 
-import es.ulpgc.toys.products.Toy;
+import es.ulpgc.toys.products.model.Toy;
+import es.ulpgc.toys.products.factory.ToyFactory;
 
-public abstract class ToyBusiness {
+public class ToyBusiness {
 
-    protected final SerialNumberGenerator generator = new SerialNumberGenerator();
+    private final ToyFactory toyFactory;
 
-    public abstract Toy createToy(String type);
+    public ToyBusiness(ToyFactory toyFactory) {
+        this.toyFactory = toyFactory;
+    }
+
+    public Toy produceToy(String type) {
+        return toyFactory.produceToy(type);
+    }
 
 }

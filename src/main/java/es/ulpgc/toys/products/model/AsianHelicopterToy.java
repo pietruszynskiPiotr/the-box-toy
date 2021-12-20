@@ -1,13 +1,15 @@
 package es.ulpgc.toys.products.model;
 
-import es.ulpgc.toys.products.Toy;
-
 public class AsianHelicopterToy implements Toy {
 
     private final Integer serialNumber;
 
-    public AsianHelicopterToy(Integer serialnumber) {
+    private final String type;
+
+    public AsianHelicopterToy(final Integer serialnumber,
+                              final String type) {
         this.serialNumber = serialnumber;
+        this.type = type;
     }
 
     @Override
