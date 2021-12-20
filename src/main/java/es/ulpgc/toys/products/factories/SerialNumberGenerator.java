@@ -1,4 +1,4 @@
-package es.ulpgc.toys.products.factory;
+package es.ulpgc.toys.products.factories;
 
 public class SerialNumberGenerator {
 

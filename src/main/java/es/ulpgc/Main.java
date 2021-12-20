@@ -1,36 +1,35 @@
 package es.ulpgc;
 
-import es.ulpgc.toys.products.business.ToyBusiness;
-import es.ulpgc.toys.products.factory.AmericanToyFactory;
-import es.ulpgc.toys.products.factory.AsianToyFactory;
+import es.ulpgc.toys.products.business.BusinessToy;
+import es.ulpgc.toys.products.factories.regionalfactories.AmericanCarToyFactory;
+import es.ulpgc.toys.products.factories.regionalfactories.AmericanHelicopterToyFactory;
+import es.ulpgc.toys.products.factories.regionalfactories.AsianCarToyFactory;
+import es.ulpgc.toys.products.factories.regionalfactories.AsianHelicopterToyFactory;
 
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        ToyBusiness americanToyBusiness = new ToyBusiness(new AmericanToyFactory());
-        ToyBusiness asianToyBusiness = new ToyBusiness(new AsianToyFactory());
+        BusinessToy businessToy = new BusinessToy();
+        businessToy.add("American Car", new AmericanCarToyFactory());
+        businessToy.add("American Helicopter", new AmericanHelicopterToyFactory());
+        businessToy.add("Asian Car", new AsianCarToyFactory());
+        businessToy.add("Asian Helicopter", new AsianHelicopterToyFactory());
         Scanner keyboard = new Scanner(System.in);
         String line = "";
         while (!line.equals("exit")) {
             line = keyboard.nextLine();
-            switch (line) {
-                case "American Car":
-                case "American Helicopter": {
-                    americanToyBusiness.produceToy(line);
-                    break;
-                }
-                case "Asian Car":
-                case "Asian Helicopter": {
-                    asianToyBusiness.produceToy(line);
-                    break;
-                }
-                default:
-                    System.out.println("Command unknown!");
-                    break;
-            }
+            tryToCreateToy(businessToy, line);
         }
     }
 
+    private static void tryToCreateToy(BusinessToy businessToy, String line) {
+        try {
+            businessToy.produceToy(line);
+        } catch (Throwable e) {
+            System.out.println("Command unknown!");
+        }
+
+    }
 }
